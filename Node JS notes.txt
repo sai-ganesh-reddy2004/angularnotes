@@ -1,0 +1,465 @@
+Node.js : The official definition of Node.js can be given as below:
+"Node.js is a platform built on Google Chrome's JavaScript Runtime(JavaScript Engine V8) for easily building fast and scalable network applications. Node.js uses an event-driven, non-blocking (Asynchronous) I-O Model that makes it lightweight and efficient for data-intensive real-time applications that run across distributed devices."
+
+Node.js:
+== Is not a library
+== Is not a framework
+== Is not a Programming Language
+== Is a run-time
+================================================
+JavaScript Engines:
+MS Edge => Chakra
+Firefox => SpiderMonkey
+Chrome => V8(designed in C++)
+================================================
+Why Node.js?
+=> Very Fast
+=> Asynchronous(Non-Blocking) and Event-Driven
+=> Single-Threaded but highly scalable
+=> No buffering
+================================================
+Where to use Node.js?
+== Data Streaming applications
+== Single-Page applications
+== Data Intensive Real-Time applications
+== I-O Bound applications
+....
+===============================================
+Where not to use Node.js?
+== Node.js is not suitable for CPU-bound applications
+-----------------------------------------------
+Top companies using Node.Js:
+=> Netflix,Linkedin(mobile app),Walmart(online commerce mobile application),Trello(single page application),Uber(To accommodate rising demand for their services),PayPal(faster response from client and server),Medium(online publishing platform),eBay(to serve large number of client requests),NASA(single cloud database to serve their astronauts), Yahoo, Mozilla, Groupon(e-commerce marketplace that connects subscribers with local merchants), GoDaddy(web hosting company).
+===============================================
+Working with a Node.JS Application requires:
+=> Importing the required Modules
+=> Creating a server component
+=> Read request and generate response
+===============================================
+Procedure for creating and running a sample node.js program:
+
+1) Start VS Code
+2) Create a new file(Eg: sample.js) as below:
+// Reading a file in synchronous mode
+const fs = require("fs");
+console.log("Start of the Program");
+var file_data = fs.readFileSync("sample.txt");
+console.log("Contents of sample.txt are : " + file_data);
+console.log("End of Program");
+
+3) To run the program, goto VS Code terminal and type:
+node filename.js
+Eg:
+node sample.js
+================================================
+// Reading a file in Asynchronous mode
+const fs = require("fs");
+console.log("Start of the Program");
+var file_data = fs.readFile("sample.txt",function(err,data){
+    if(err)
+        return console.error("Error in Reading the file or file not exist");
+    console.log("Contents of sample.txt are : " + data);
+});
+console.log("End of Program");
+==============================================
+Modules in Node.js : 
+== Programming in Node.js is implemented by importing various pre-defined/user-defined modules. A Module is a JavaScript file that can be imported to our program. A module can contain a set of variables,functions,classes and executable statements. Modules are imported into a Node.js program using require() function.
+
+== Node.js provided several core modules that can be used while working with applications. They include : http,https,fs,path,os etc
+
+Creating and importing user-defined modules :
+
+1. Create a module as below:
+// Save this file as mymodule.js
+
+console.log("Welcome to Modular Programming");
+
+let a = 100;
+
+const fun1 = () => {
+    console.log("Inside fun1");
+}
+
+class Sample{
+    x = 10;
+    welcome(){
+        console.log("Inside welcome of class Sample");
+    }
+}
+
+module.exports = {a,fun1,Sample};
+=========================================
+// Importing mymodule.js
+
+const mymodule = require("./mymodule");
+console.log("Value of a = " + mymodule.a);
+mymodule.fun1();
+const s = new mymodule.Sample();
+console.log("x = " + s.x);
+s.welcome();
+==========================================
+Event Handling in Node.js : 
+=> Node.js is a single-threaded application,but it will support concurrency thourgh the concept of events and callback functions. It uses asynchronous function calls to maintain concurrency or handle the requests.
+
+=> Whenever a request was completed, Node thread keeps the result an event loop. Then, it fires the corresponding event which signals the event-listener function to execute.
+Eg:
+// Program to demonstrate event handling
+
+// Import the required module
+const events = require("events");
+
+// Create an EventEmitter object
+const emitter = new events.EventEmitter();
+
+// Register an event
+emitter.on("event1",function(){
+    console.log("Event Raised");
+});
+
+// Raise the event
+emitter.emit("event1");
+============================================
+// Register and handle multiple events
+
+const events = require("events");
+const emitter = new events.EventEmitter();
+
+console.log("Start of Program")
+emitter.on("event1",function(){
+    console.log("Event-1 Raised");
+});
+console.log("Middle of Program");
+emitter.on("event2",function(){
+    console.log("Event-2 Raised");
+});
+
+emitter.emit("event1");
+emitter.emit("event2");
+console.log("End of Program")
+============================================
+// Passing parameters to a event listener
+
+const events = require("events");
+const emitter = new events.EventEmitter();
+
+emitter.on("event1",function(param){
+    console.log("The Parameters Passed to Event-1 are : " + param);
+});
+emitter.on("event2",function(param){
+    console.log("Received Student Details are : ");
+    console.log(param.rollno + "  " + param.name + "   " + param.course);
+});
+
+emitter.emit("event1","Welcome to Node.js");
+emitter.emit("event2",{rollno:101,name:"Suresh",course:"PHP"});
+===========================================
+// Passing parameters to a event listener
+
+const events = require("events");
+const emitter = new events.EventEmitter();
+
+emitter.on("event1",function(param){
+    console.log(param.rollno + "  " + param.name + "   " + param.course);
+});
+
+console.log("Received Student Details are : ");
+emitter.emit("event1",{rollno:101,name:"Suresh",course:"PHP"});
+emitter.emit("event1",{rollno:102,name:"Ramesh",course:"Python"});
+emitter.emit("event1",{rollno:103,name:"Mahesh",course:"Node.js"});
+=========================================
+// Raising an event exactly once
+
+const events = require("events");
+const emitter = new events.EventEmitter();
+
+emitter.once("event1",function(param){
+    console.log(param.rollno + "  " + param.name + "   " + param.course);
+});
+
+console.log("Received Student Details are : ");
+emitter.emit("event1",{rollno:101,name:"Suresh",course:"PHP"});
+emitter.emit("event1",{rollno:102,name:"Ramesh",course:"Python"});
+emitter.emit("event1",{rollno:103,name:"Mahesh",course:"Node.js"});
+============================================
+/* Removing an event listener */
+
+const events = require("events");
+const emitter = new events.EventEmitter();
+
+function eventHandler(){
+    console.log("Event-1 Registered");
+}
+emitter.on("event1",eventHandler);
+
+emitter.emit("event1");
+emitter.removeListener("event1",eventHandler);
+emitter.emit("event1");
+emitter.emit("event1");
+===============================================
+fs module in Node.js : The fs(File System) module in Node.js is used to perform file and directory based operations.
+
+=> The following are the various operations that can be performed on a file:
+1) Importing the fs module
+2) Opening the file:
+open(filename,open-mode[,callback])
+
+Open-modes:
+r => read only mode(Asynchronous)
+r+ => read and write
+rs => read-only mode(Synchronous)
+rs+ => read and write
+w => write-only mode(Stores data from start of the file)
+a => append-only mode(Stores data from end of the file)
+x => execute(exclusive) mode => Will for existing files only
+....
+
+3) Reading(Retrieving) data from the file
+4) Writing(Storing) data into the file
+5) Closing the file
+==================================================
+// Reading data from a file(both Synchronous and Asynchronous)
+const fs = require("fs");
+
+// Asynchronous read
+fs.readFile("sample.txt",(err,data) => {
+    if(err)
+        return console.error(err);
+    console.log("File Data in Asynchronous read : " + data);
+});
+
+// Synchronous read
+var data = fs.readFileSync("sample.txt");
+console.log("File Data in Synchronous Read : " + data);
+=================================================
+// Opening and closing file
+const fs = require("fs");
+
+fs.open("sample.txt","r",function(err,fd){
+    if(err)
+       return console.error(err);
+    console.log("File Opened Successfully");
+    fs.close(fd,function(err){
+        if(err)
+            console.error(err);
+    });
+    console.log("File Closed Successfully");
+});
+==============================================
+// Writing data into a file and displaying the contents
+const fs = require("fs");
+
+fs.writeFile('sample.txt',"Welcome to Node.js",function(err){
+    if(err)
+        console.error(err);
+    console.log("Data Written into the File Successfully");
+});
+fs.readFile("sample.txt",function(err,data){
+    if(err)
+        console.error(err);
+    console.log("Contents of sample.txt are : " + data);
+});
+==============================================
+// Deleting a file
+const fs = require("fs");
+fs.unlink("sample.txt",function(err){
+    if(err)
+        return console.error(err);
+    console.log("File Deleted Successfully");
+});
+=========================================
+// Creating a new directory
+
+const fs = require("fs");
+fs.mkdir("myDir",function(err){
+    if(err)
+        return console.error(err);
+    console.log("Directory Created Successfully");
+});
+-------------------------------------------
+// Reading the contents of a directory
+
+const fs = require("fs");
+fs.readdir("mydir",function(err,files){
+    if(err)
+        return console.error(err);
+    console.log("Contents of the Directory are : ");
+    files.forEach(filename => {
+        console.log(filename);
+    });
+    console.log("No. of files : " + files.length);
+});
+------------------------------------------
+// Removing a  directory
+
+const fs = require("fs");
+fs.rmdir("mydir",function(err){
+    if(err)
+        return console.error(err);
+    console.log("Directory Removed Successfully");
+});
+------------------------------------------
+Streams in Node.js : 
+=> Any data that flows between two devices is called a "stream". The device from which the data is sent is called "sender" and the device to which the data is sent is called "receiver".
+
+=> Streams in Node.js are repredented as objects that lets us read data from a source or write data to the destination in continuous fashion.
+
+=> Node.js supports four types of streams:
+1) Readable : This stream is used for read operation
+2) Writable : This stream is used for write operation
+3) Duplex : This stream is used for both read and write operations
+4) Transform : In this stream the output is computed based on the input.
+
+=> Each type of stream is an instance of EventEmitter class and throws several events at different times. Some events include:
+
+== data : This event is fired when there is some data available to read.
+== end : This event will raise when there is no more data available to read.
+== finish : This event is raised when all the data was flushed from the underlying system.
+== error : This event is raised when an error occurs while sending or receiving data
+=====================================================
+// Writing data into a file
+const fs = require("fs");
+const filedata = "Welcome to Streams in Node.js";
+var write_stream = fs.createWriteStream("demo.txt");
+write_stream.write(filedata);
+write_stream.end();
+write_stream.on("finish",function(){
+    console.log("File Write Operation Successful");
+});
+write_stream.on("error",function(err){
+    return console.error(err);
+});
+====================================================
+// Reading data from a file
+const fs = require("fs");
+var read_stream = fs.createReadStream("demo1.txt");
+var file_data = "";
+read_stream.on("data",function(fdata){
+    file_data += fdata;
+});
+read_stream.on("end",function(){
+    console.log("Data Read : " + file_data);
+});
+read_stream.on("error",function(err){
+    return console.error(err);
+});
+====================================================
+// Copying data from one file into another
+const fs = require("fs");
+
+// Open source file in read mode
+var read_stream = fs.createReadStream("demo.txt");
+// Open target file in write mode
+var write_stream = fs.createWriteStream("demo1.txt");
+read_stream.pipe(write_stream);
+console.log("File is Copied Successfully");
+=========================================
+http module Node.js : This module in Node.js is used to transfer data over HTTP. This is one of the important modules used in the client-server programming of Node.js
+
+=> This module is used to create a server that listens to server ports and gives a response whenever it receives a request from the client. To create a server component, we use the method createServer() in the http module.
+Eg:
+// Creating a node server
+const http = require("http");
+const server = http.createServer((req,res) => {
+    console.log("Welcome to server-side scripting");
+});
+server.listen(3000);
+console.log("Server Running at http://localhost:3000");
+--------------------------------------------------
+// Creating a node server(alternate code)
+const http = require("http");
+const server = http.createServer((req,res) => {
+    console.log("Welcome to server-side scripting");
+}).listen(3000);
+console.log("Server Running at http://localhost:3000");
+==================================================
+Adding a HTTP header : If we want to display the response on the browser, we have to include the HTTP header with the corresponding content type and call the method write() on the response object.
+Eg:
+// Sending a message to the client
+
+const http = require("http");
+const server = http.createServer((req,res) => {
+    res.writeHead(200,{'Content-Type':'text/html'});
+    res.write("<h1>Welcome to server-side scripting</h1>");
+    res.write("<p style='color:red;font-size:42px;'>Welcome to Node.js</p>");
+    res.end();
+}).listen(3000);
+console.log("Server Running at http://localhost:3000");
+=================================================
+// Routing in Node.js
+const http = require("http");
+const server = http.createServer((req,res) => {
+    let url = req.url;
+    if(url == "/")
+    {
+        res.write("<h1>Welcome to Home Page</h1>");
+        res.write("<h3 align='center'>");
+        res.write("<a href='/about'>About Us</a> | ");
+        res.write("<a href='/products'>Products</a> | ");
+        res.write("<a href='/contactus'>Contact Us</a> | ");
+        res.end();
+    }
+    else if(url == "/products")
+    {
+        res.write("<h1>Welcome to Products Page");
+        res.write("<br><a href='/'>Back To Home</a>");
+        res.end();
+    }
+    else if(url == "/about")
+    {
+        res.write("<h1>Welcome to About Us Page");
+        res.write("<br><a href='/'>Back To Home</a>");
+        res.end();
+    }
+    else if(url == "/contactus")
+    {
+        res.write("<h1>Welcome to Contact Us Page");
+        res.write("<br><a href='/'>Back To Home</a>");
+        res.end();
+    }
+    else
+    {
+        res.write("<h1>Http 404 Error. Invalid URL</h1>");
+        res.end();
+    }
+});
+server.listen(3000);
+console.log("Server Running at http://localhost:3000/");
+-------------------------------------------------
+Installing nodemon:
+
+1) Goto VS Code and install nodemon as below:
+npm install -g save nodemon
+
+2) Create package.json as below:
+npm init
+=> Modify package.json as below:
+{
+  "name": "nodelab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "App.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"nodemon App.js",
+    "start-server":"node App.js"
+  },
+  "author": "apec",
+  "license": "ISC"
+}
+
+3) Create a new File App.js and write the following code:
+// source code of App.js
+
+console.log("Welcome to Node.js");
+let a = 100;
+console.log("Value of a = " + a);
+if(a % 2 == 0)
+  console.log("Even");
+else
+  console.log("Odd");
+
+4) Start Running the file as below:
+npm start
+
+5) Now, modify App.js.  The changes are automatically reflected in the terminal.
+====================================

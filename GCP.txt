@@ -1,0 +1,44 @@
+What is Cloud Computing??
+=> Cloud computing is the means of accessing our applications, our storage, our computers and etc via internet instead of our premises or business's servers. This means that we can store files, run applications, and access data on any machine connected to the internet.
+
+Features of Cloud Computing:
+== Shared resources : Cloud service providers share their high-performance computers with multiple users at once
+== Easy Monitoring : System administrators can monitor system's performance at real-time
+== Low Downtime : Cloud services operate efficiently with hardly any downtimes
+== Remote Access : Users are able to store and retrieve data from anywhere with the internet
+== Flexible and Customizable : Cloud services adapt to user demands
+== High Security : Strong security controls gaurd against data breaches
+== Affordable : Organizations save costs by avoiding expensive on-premises infrastructure
+== Pay-as-you-go : Customers only pay for that they use
+
+Why GCP: GCP is widely used for many reasons such as:
+== Reasonable Pricing : Cheaper compared to other cloud service providers. Also, provides monthly subscription scheme that helps companies in controlling their expenses
+== High-Speed Performance : GCP provides high-speed networks upto 10 Tbps
+== Data centers availability : It has data centers available across Japan, Europe, US and many more regions
+== Big Data and AI Tools : GCP provides effective handling of enormous amounts of data. It uses the tool named BigQuery that allows fast exaamination of large datasets
+
+GCP Services: It provides several services like:
+== Computing Power : Executes applications and handles information
+== Networking : Connects users and networks worldwide
+== AI & ML : Enables organizations to create smart applications
+== Big Data Processing : Processes and analyzes large amounts of data
+
+GCP Elements : GCP consists of various components that assist companies in storing and processing information.They include:
+1) Calculate : This unit operates programs and compute data in the cloud. It includes:
+== App Engine : Runs apps without managing servers
+== Compute Engine : Provides VMs to run workloads
+2) Storage and Databases : This component stores applications files, backups and databases. It includes:
+== Cloud Storage : Stores large files like videos and images
+== Cloud SQL : It manages databases like MySQL and PostGreSQL
+3) Networking : This component manages internet traffic and security. It includes:
+== VPC(Virtual Private Cloud) : Private network for cloud resources
+== Cloud Load Balancing : It distributes traffic across servers
+4) Big Data: It is used to handle large data sets. It consists of:
+== BigQuery : A resource for analyzing large datasets quickly, easily and affordably. Business Analysts could easily create reports on sales patterns and customer behavior
+== Cloud DataProc : Helps in analyzing big data through open source platforms
+5) Developer Tools : This component helps developers to build and maintain applications. This includes:
+== Artifact Registry : Stores software packages
+== Cloud SDK : Provides APIs to interact with GCP services
+6) Google Cloud Trace : Cloud Trace, a tool in Google Cloud Platform, monitors the time it takes for requests to move through your app, helping you evaluate its performance. You can think of it as a stopwatch that logs each step a request takes, from the user's click to the app's response. This tool assists developers in identifying bottlenecks or slow areas in their applications, allowing them to make necessary improvements so the app becomes more reliable and faster.
+7) In-Built Security : GCP keeps your data and apps safe using many strong protections. It controls who can see and use your resources by letting you set permissions for each user. All your data is encrypted, which means it is turned into a secret code that only authorized people can read. GCP also watches for unusual activity to stop threats before they cause problems. Plus, it regularly updates and patches its systems to protect against new security risks.
+8) Google Debugger : Google Debugger helps you see what is happening inside your app step-by-step, check variables, and understand why something might not be working right. It helps developers to find and fix issues in their running applications without stopping them. 

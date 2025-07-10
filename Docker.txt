@@ -1,0 +1,88 @@
+Docker : 
+=> Docker is a tool that allows developers, sys-admins etc. to easily deploy their applications in a sandbox (called containers) to run on the host operating system i.e. Linux. The key benefit of Docker is that it allows users to package an application with all of its dependencies into a standardized unit for software development. Unlike virtual machines, containers do not have high overhead and hence enable more efficient usage of the underlying system and resources.
+
+=> Docker is a set of platform as a service(Paas) products that use OS-level virtualization to deliver software in packages called containers.  
+
+=> There are two main components of Docker: The Docker Engine, which is the Docker binary that's running on your local machine and servers and does the work to run your software. The Docker Hub is a website and cloud service that makes it easy for everyone to share their docker images.
+
+=> A Docker Image is a read-only template that is used for creating containers, containing the application code and dependencies.
+=> Dockerfile: It is a file that describes the steps to create an image quickly.
+=> Docker Registry : It is a storage distribution system for docker images, where you can store the images in both public and private modes.
+
+The following are the some of docker commands that are used commonly:
+== Docker Run: It is used for launching the containers from images, with specifying the runtime options and commands.
+== Docker Pull: It fetches the container images from the container registry like Docker Hub to the local machine.
+== Docker ps : It helps in displaying the running containers along with their important information like container ID, image used and status.
+== Docker Stop : It helps in halting the running containers gracefully shutting down the processes within them.
+== Docker Start: It helps in restarting the stopped containers, resuming their operations from the previous state.
+== Docker Login: It helps to login in to the docker registry enabling the access to private repositories.
+====================================
+Docker vs Virtual Machine
+=> Docker and Virtual Machines (VMs) are both technologies that provide isolated environments for running applications, but they do so in different ways and have distinct characteristics.
+
+Virtual Machines : A Virtual Machine (VM) is an emulation of a physical computer. It runs on a host machine and uses a hypervisor to manage multiple VM instances. Each VM has its own guest operating system, which makes it independent of the host OS. This allows VMs to run different operating systems on the same physical hardware
+
+Key Features of VMs:
+== Virtualization: VMs virtualize both the operating system kernel and the application layer.
+== Compatibility: VMs are compatible with all operating systems.
+== Size: VMs can be large, often several gigabytes or more.
+== Performance: Starting a VM can take several minutes as it involves booting up a full OS.
+== Security: VMs are more secure as they run their own OS, providing better isolation from the host OS.
+== Replicability: VMs can be resource-intensive and less efficient to replicate
+
+Docker Containers: Docker is a containerization platform that packages an application and its dependencies into a container. Unlike VMs, Docker containers share the host OS kernel and run as isolated processes on the host OS. This makes Docker containers lightweight and fast
+
+Key Features of Docker:
+== Virtualization: Docker virtualizes only the application layer, not the OS kernel.
+== Compatibility: Docker works best with Linux distributions but can run on Windows and Mac with some limitations.
+== Size: Docker images are lightweight, typically in the order of kilobytes or megabytes.
+== Performance: Docker containers start quickly, usually in milliseconds.
+== Security: Docker containers are less secure than VMs as they share the host OS kernel.
+== Replicability: Docker containers are easy to replicate and efficient for running multiple applications
+
+Comparisons between VM and Docker:
+1) Virtualization
+== VMs: Virtualize both OS kernel and application layer.
+== Docker: Virtualizes only the application layer.
+
+2) Compatibility
+== VMs: Compatible with all operating systems.
+== Docker: Best with Linux distributions, some issues with Windows and older Mac versions.
+
+3) Size
+== VMs: Large, several gigabytes or more.
+== Docker: Lightweight, kilobytes or megabytes.
+
+4) Performance
+== VMs: Slower to start, takes minutes.
+== Docker: Fast to start, takes milliseconds.
+
+5) Security
+== VMs: More secure, runs its own OS.
+== Docker: Less secure, shares host OS kernel.
+
+6) Replicability
+== VMs: Less efficient, resource-intensive.
+== Docker: Easy and efficient to replicate.
+
+7) Availability
+== VMs: Can run even the host OS fails
+== Docker: Cannot run when the host OS fails
+
+8) Environment
+== VMs : Can have different OS on host OS
+== Docker : Will use the host OS kernel  
+
+Conclusion : Both Docker and VMs have their own advantages and use cases. Docker is ideal for applications that require fast startup times and efficient resource usage, while VMs are better suited for applications that need strong isolation and compatibility with different operating systems. Depending on your specific needs, you can choose the technology that best fits your requirements
+=================================
+What are IaaS, PaaS and SaaS?(See Figure)
+=> Cloud computing has three main cloud service models: IaaS (infrastructure as a service), PaaS (platform as a service), and SaaS (software as a service). 
+
+=> "As a service" typically means that the service model is offered by a third party in the cloud. In other words, you don’t have to purchase, manage, or use any hardware, software, tools, or applications from an on-premises data center. Instead, you can simply pay a subscription or pay based on consumption (pay-as-you-go) to access what you need on demand via an internet connection. 
+
+1) IaaS : Infrastructure as a service, or IaaS, delivers on-demand infrastructure resources to organizations via the cloud, such as compute, storage, networking, and virtualization. Customers don't have to manage, maintain, or update their own data center infrastructure, but are responsible for the operating system, middleware, virtual machines, and any apps or data. 
+
+2) PaaS : Platform as a service, or PaaS, delivers and manages all the hardware and software resources to develop applications through the cloud. Developers and IT operations teams can use PaaS to develop, run, and manage applications without having to build and maintain the infrastructure or platform on their own. Customers still have to write the code and manage their data and applications, but the environment to build and deploy apps is managed and maintained by the cloud service provider. 
+
+3) SaaS : Software as a service, or SaaS, provides the entire application stack, delivering an entire cloud-based application that customers can access and use. SaaS products are completely managed by the service provider and come ready to use, including all updates, bug fixes, and overall maintenance. Most SaaS applications are accessed directly through a web browser, which means customers don’t have to download or install anything on their devices. 
+=================================
